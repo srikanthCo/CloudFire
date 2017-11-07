@@ -23,6 +23,8 @@ import { CartComponent } from './components/cart/cart.component';
 
 import { FilterPipe } from './pipes/filter.pipe';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { SubCategoryComponent } from './components/sub-category/sub-category.component';
+import { ProductsComponent } from './components/products/products.component';
 
 const appRoutes: Routes = [
   {path:'',component: HomeComponent},
@@ -32,7 +34,9 @@ const appRoutes: Routes = [
   {path:'signup',component:SignupComponent},
   {path:'categories',component:CategoriesComponent},
   {path:'exp',component:ExpComponent},
-  {path:'cart',component:CartComponent}
+  {path:'cart',component:CartComponent},
+  {path:'subcategory',component:SubCategoryComponent},
+  {path:'products',component:ProductsComponent}
 ];
 
 @NgModule({
@@ -49,7 +53,9 @@ const appRoutes: Routes = [
     ExpComponent,
     FilterPipe,
     CartComponent,
-    TruncatePipe
+    TruncatePipe,
+    SubCategoryComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
