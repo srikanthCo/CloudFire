@@ -1,0 +1,22 @@
+<div class="container-fluid table-styling">
+  <h2 class="page-header">Add SubCategory</h2>
+  <br />
+  <form *ngIf="items" >
+    <!-- <div class="form-group">
+      <input type="radio" (click)="getCategories()" [ngModel]="{checked: type == true}" (ngModelChange)="type=true"  name="type" value="true">Category<br>
+      <input type="radio" (click)="getsubCategories()" [ngModel]="{checked: type == false}"  (ngModelChange)="type=false" name="type" value="false">SubCategory
+    </div> -->
+    <div class="form-group" >
+      <label>Category</label>
+      <select class="form-control" type="text"  [(ngModel)]="category" name="category"(change)="check()" required>
+        <option *ngFor="let item of items" value="{{item.id}}">{{item.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Sub Category Name</label>
+      <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
+    </div>
+
+    <input type="submit" (click)="add()" class="btn btn-success">
+  </form>
+</div>

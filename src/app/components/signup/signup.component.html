@@ -1,0 +1,29 @@
+<div class="login-box">
+    <div class="login-logo">
+      <a href="/"><b>SUNCITY</b> Lite</a>
+    </div>
+    <div class="login-box-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+      <form>
+        <div class="form-group has-feedback">
+          <input type="email" class="form-control"  [(ngModel)]="email" [ngModelOptions]='{standalone: true}' required placeholder="Email">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control"  [(ngModel)]="password" [ngModelOptions]='{standalone: true}' required placeholder="Password">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="confirmpassword"  [(ngModel)]="confirmpassword" [ngModelOptions]='{standalone: true}' required class="form-control" placeholder="confirmPassword">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+        <div class="row">
+          <div class="col-xs-8">            
+          </div>
+          <div class="col-xs-4">
+            <button type="submit" (click)="signUp()" class="btn btn-primary btn-block btn-flat">Sign In<span [routerLink]="['/login']"></span></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

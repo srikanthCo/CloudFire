@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import {DbService} from '../../../app/services/db.service';
+import { Observable } from 'rxjs/Observable';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  constructor(private db: DbService) {
+  
+  }
 
   ngOnInit() {
   }

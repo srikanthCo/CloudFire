@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row" style="padding-left:20%;">
+    <h3 class="padding-left:3%;">Categories</h3>
+    <hr/>
+    <div style="top:10%">
+      <div *ngIf="items && !sub" class="col-sm-2 align-middle">
+        <ul>
+          <li class="text" *ngFor="let item of items">
+            <label (click)="getSubCat(item.id)" >{{item.name}}</label>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="sub && subitems" class="col-sm-2">
+        <ul class="tree" style="width:698%;">
+          <li><a (click) = "getCategories()" >{{subitems[0].catlog}}</a></li>
+          <ul *ngFor="let key of keys">
+            <li><a (click)="getSubCat(key)" >{{key}}</a></li>
+            <ul>
+              <li><a  >key</a></li>
+            </ul>
+          </ul>
+        </ul>
+        <ul style="width:698%;" *ngFor="let item of subitems">
+          <li class="text" *ngIf="!item.isProduct" >
+            <label (click)="getSubCat(item.id)"  >{{item.name}}</label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="padding-left:20%;">
+    <div *ngFor="let item of subitems" class="col-md-3 col-sm-4 col-xs-6" style="padding:2%;" >
+      <div *ngIf="item.isProduct && item.imageUrl">
+        <a><img src="{{item.imageUrl}}"></a>
+        <hr/>
+        <p class="text-center">{{item.name}}</p>
+        <p class="text-center price"> &#8377;50</p>
+        <button type="button" class="btn btn-primary btn-xs  center-block">Add to Cart</button>
+      </div>
+    </div>                                                                               
+  </div>
+</div>
+  
+  
+
+   <!-- <ul class="tree">
+    <li>Animals
+     <ul>
+      <li>Birds</li>
+      <li>Mammals
+       <ul>
+        <li>Elephant</li>
+        <li>Mouse</li>
+       </ul>
+      </li>
+      <li>Reptiles</li>
+     </ul>
+    </li>
+    <li>Plants
+     <ul>
+      <li>Flowers
+       <ul>
+        <li>Rose</li>
+        <li>Tulip</li>
+       </ul>
+      </li>
+      <li>Trees</li>
+     </ul>
+    </li>
+   </ul> -->

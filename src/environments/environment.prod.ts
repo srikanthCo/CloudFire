@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase : {
-    apiKey: "AIzaSyBTCfjM7Ji6mjYD9ZExMP4xSQzuJqc2SBQ",
-    authDomain: "vinoothna-e90e0.firebaseapp.com",
-    databaseURL: "https://vinoothna-e90e0.firebaseio.com",
-    projectId: "vinoothna-e90e0",
-    storageBucket: "vinoothna-e90e0.appspot.com",
-    messagingSenderId: "664257950648"
+    apiKey: "AIzaSyBfnoPhcu26FjOweNwjUOOSQbu-d4vZOos",
+    authDomain: "cloudfire-56bf9.firebaseapp.com",
+    databaseURL: "https://cloudfire-56bf9.firebaseio.com",
+    projectId: "cloudfire-56bf9",
+    storageBucket: "cloudfire-56bf9.appspot.com",
+    messagingSenderId: "281951377923"
   }
 };
