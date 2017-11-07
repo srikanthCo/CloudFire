@@ -23,7 +23,18 @@ export class DbService {
   }
 
   getCategories(){
-    return this.db.collection('categories').valueChanges();
+    const query = "parentid";
+    return this.db.collection('categories', ref => ref.where(query, '==', null)).valueChanges();
+  }
+
+  getAllSubCategories(){
+    const query = "isProduct";
+    return this.db.collection('categories', ref => ref.where(query, '==', false)).valueChanges();;
+  }
+
+  getProducts(){
+    const query = "isProduct";
+    return this.db.collection('categories', ref => ref.where(query, '==', true)).valueChanges();;
   }
 
   getParent(){
@@ -33,7 +44,7 @@ export class DbService {
 
   getCategory(id){
     const query = "catlog";
-    return this.db.collection('categories', ref => ref.where(query, '==', id).where('parentid','==',null)).valueChanges();;
+    return this.db.collection('categories', ref => ref.where(query, '==', id).where('parentid','==',null)).valueChanges();
   }
 
   getCatlogCategories(id){
