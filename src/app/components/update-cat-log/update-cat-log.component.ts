@@ -6,10 +6,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-cat-log.component.css']
 })
 export class UpdateCatLogComponent implements OnInit {
-
-  constructor() { }
-
+interval:number = 3000; //ms
+items:any;
+  
+  constructor() {
+  }
+  
   ngOnInit() {
+    this.items = [
+      {
+        "name": "soap",
+        "space":[
+        ],
+      },
+      {
+        "name": "mug",
+        "space":[
+          {}
+        ],
+      },
+      {
+        "name": "jug",
+        "space":[
+          {},
+          {}
+        ],
+      },
+      {
+        "name": "hug",
+        "space":[],
+      }
+    ]
+      
+
+    
+    setInterval(function() {
+      //To demonstrate binding FROM Model TO View
+      this.checkboxFlag = !this.checkboxFlag;
+    }, 3000);
   }
 
 }

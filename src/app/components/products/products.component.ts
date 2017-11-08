@@ -58,11 +58,10 @@ export class ProductsComponent implements OnInit {
   segregate(){
     var dup = [];
     for(let i=0; i<this.PCategories.length;i++){
-      var dash = "";
+      this.PCategories[i].space = [];
       for(let j=0;j<Object.keys(this.PCategories[i].ansisters).length;j++){
-        dash = dash + "-";
+        this.PCategories[i].space.push({});
       }
-      this.PCategories[i].dname = dash + this.PCategories[i].name;
     }
     for(let k=0;k<this.PCategories.length;k++){
       if(Object.keys(this.PCategories[k].ansisters).length == 0){

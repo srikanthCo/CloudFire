@@ -27,7 +27,7 @@ export class DbService {
     return this.db.collection('categories', ref => ref.where(query, '==', null)).valueChanges();
   }
 
-  getAllSubCategories(){
+  getAllCategories(){
     const query = "isProduct";
     return this.db.collection('categories', ref => ref.where(query, '==', false)).valueChanges();;
   }

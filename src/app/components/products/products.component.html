@@ -32,9 +32,16 @@
                 </div>
                 <div class="form-group" >
                   <label>Category</label>
-                  <select class="form-control" type="text" [disabled]="!PCategories"  [(ngModel)]="category" name="category"(change)="check()" required>
+                  <!-- <select class="form-control" type="text" [disabled]="!PCategories"  [(ngModel)]="category" name="category"(change)="check()" required>
                     <option *ngFor="let Pcat of PCategories" [disabled]="!Pcat.hasProduct"  value="{{Pcat.id}}">{{Pcat.dname}}</option>
-                  </select>
+                  </select> -->
+                  <div class="container-fluid" style="background-color:rgb(235, 235, 228);">
+                    <div class="col-sm-6" style="padding:5%;">
+                        <div *ngFor="let Pcat of PCategories" style="padding:2%;">
+                          <label *ngFor="let space of Pcat.space">&emsp;</label><input [(ngModel)]="Pcat.check" [ngModelOptions]="{standalone: true}" (change)="changeState()" type="checkbox"/>{{Pcat.name}}
+                        </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label>Product Name</label>

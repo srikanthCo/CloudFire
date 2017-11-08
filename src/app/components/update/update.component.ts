@@ -30,7 +30,7 @@ export class UpdateComponent implements OnInit {
   Pname: string;
 
   constructor(private db: DbService) {
-    db.getCategories().subscribe(val => {
+    db.getAllCategories().subscribe(val => {
       _.forEach(val,function(value: any,index){
         value.indexing = Object.keys(value.ansisters);
       });
