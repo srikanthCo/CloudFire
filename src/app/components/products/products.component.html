@@ -76,9 +76,9 @@
           <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Parent</th>
+            <!-- <th>Parent</th>
             <th>path</th>
-            <th>isProduct</th>
+            <th>isProduct</th> -->
             <th>Catlog</th>
             <th class="edit-width">Update</th>
             <th class="edit-width">Delete</th>
@@ -89,13 +89,13 @@
             <td>{{i+1}}</td>
             <td *ngIf="!item.selected">{{item.name}}</td> 
               <td *ngIf="item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.name"  [ngModelOptions]="{standalone: true}" ></td>
-            <td *ngIf="item.parentid && !item.selected">{{item.parentid}}</td>
+            <!-- <td *ngIf="item.parentid && !item.selected">{{item.parentid}}</td>
               <td *ngIf="item.parentid && item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.parentid" [ngModelOptions]="{standalone: true}" ></td>
             <td *ngIf="!item.parentid" class="center">Head</td>
             <td *ngIf="item.parentid">
                 <label class="d-inline">{{item.catlog | limitTo: 5}}/</label>
                 <label *ngFor="let key of item.indexing" class="d-inline">{{key | limitTo: 5}}/</label>
-            </td>
+            </td> -->
               <td *ngIf="!item.parentid">
                   <h5 class="d-inline">{{item.catlog}}/</h5>
               </td>
