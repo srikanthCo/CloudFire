@@ -49,7 +49,7 @@ export class DbService {
 
   getCatlogCategories(id){
     const query = "catlog";
-    return this.db.collection('categories', ref => ref.where(query, '==', id)).valueChanges();;
+    return this.db.collection('categories', ref => ref.where(query, '==', id).where('isProduct','==',false)).valueChanges();;
   }
 
   getsubcategories(id) {

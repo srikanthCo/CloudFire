@@ -31,9 +31,6 @@ export class ProductsComponent implements OnInit {
 
   constructor(private db: DbService) {
     db.getProducts().subscribe(val => {
-      _.forEach(val,function(value: any,index){
-        value.indexing = Object.keys(value.ansisters);
-      });
       this.items = val;
     }); 
     db.getCatlog().subscribe(val => {
@@ -161,18 +158,22 @@ export class ProductsComponent implements OnInit {
       name: this.category,
       slug: this.category
     }
-    console.log("sub ans",this.subitems.ansisters,this.hasProduct)
-    var ansisters = this.subitems.ansisters;
-    ansisters[this.category] = path;
+    var parent = {};
+    this.PCategories.forEach(element => {
+      if(element.check){
+        parent[element.id] = element.check;
+      }
+    });
+    console.log("parent",parent)
+    // var ansisters = this.subitems.ansisters;
+    // ansisters[this.category] = path;
     var doc = {
-      ansisters: ansisters,
       name: this.name,
       id: this.name.replace(/ /g,'').toLowerCase(),
       slug: this.name.replace(/ /g,'').toLowerCase(),
-      parentid: this.category,
+      categoryid: parent,
       isProduct: true,
-      hasProduct: false,
-      catlog: this.subitems.catlog
+      catlog: this.catlogname
     }
     console.log("sub name,category,doc",this.name,this.category,doc);
     console.log("html",(<HTMLInputElement>document.getElementById('image')).files[0])
