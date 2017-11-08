@@ -26,6 +26,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { SubCategoryComponent } from './components/sub-category/sub-category.component';
 import { ProductsComponent } from './components/products/products.component';
 import { UpdateCatLogComponent } from './components/update-cat-log/update-cat-log.component';
+import { AddProductsComponent } from './components/add-products/add-products.component';
 
 const appRoutes: Routes = [
   {path:'',component: HomeComponent},
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
   {path:'cart',component:CartComponent},
   {path:'subcategory',component:SubCategoryComponent},
   {path:'products',component:ProductsComponent},
-  {path:'updatecatlog',component:UpdateCatLogComponent}
+  {path:'updatecatlog',component:UpdateCatLogComponent},
+  {path:'addproducts',component:AddProductsComponent}
 ];
 
 @NgModule({
@@ -58,7 +60,8 @@ const appRoutes: Routes = [
     TruncatePipe,
     SubCategoryComponent,
     ProductsComponent,
-    UpdateCatLogComponent
+    UpdateCatLogComponent,
+    AddProductsComponent
   ],
   imports: [
     BrowserModule,
