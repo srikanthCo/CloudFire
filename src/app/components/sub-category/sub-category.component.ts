@@ -31,7 +31,7 @@ export class SubCategoryComponent implements OnInit {
   Pname: string;
 
   constructor(private db: DbService) {
-    db.getAllSubCategories().subscribe(val => {
+    db.getAllCategories().subscribe(val => {
       _.forEach(val,function(value: any,index){
         value.indexing = Object.keys(value.ansisters);
       });

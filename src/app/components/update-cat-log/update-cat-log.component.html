@@ -1,3 +1,9 @@
-<p>
-  update-cat-log works!
-</p>
+<div style="padding-left:20%">
+  <div>
+    <h2>Angular 2 Two Way binding Example</h2>
+    <h3>Wait {{interval / 1000}} seconds for checkbox setInterval that periodically changes checkbox state</h3>
+    <div *ngFor="let item of items">
+     <label *ngFor="let space of item.space">&emsp;</label><input [(ngModel)]="checkboxFlag" type="checkbox"/>{{item.name}}
+    </div>
+  </div>
+</div>
