@@ -26,9 +26,10 @@ export class SubCategoryComponent implements OnInit {
   search: string;
   catlog: any;
   catlogname: string;
-  hasProduct: boolean;
   PCategories: any;
-  Pname: string;
+  slug:string;
+  status:string;
+  display:string;
 
   constructor(private db: DbService) {
     db.getAllCategories().subscribe(val => {
@@ -45,23 +46,12 @@ export class SubCategoryComponent implements OnInit {
   ngOnInit() {
   }
 
-  getcat(){
-    console.log("hello");
-    this.category = null;
-    this.PCategories = null;
-    this.db.getCatlogCategories(this.catlogname).subscribe(val => {
-      console.log("val",val);
-      this.PCategories = val;
-      this.segregate();
-    });
-  }
-
   segregate(){
     var dup = [];
     for(let i=0; i<this.PCategories.length;i++){
       var dash = "";
       for(let j=0;j<Object.keys(this.PCategories[i].ansisters).length;j++){
-        dash = dash + "-";
+        dash = dash + " -";
       }
       this.PCategories[i].dname = dash + this.PCategories[i].name;
     }
@@ -79,6 +69,19 @@ export class SubCategoryComponent implements OnInit {
     }
     this.PCategories = dup;
   }
+
+  getcat(){
+    console.log("hello");
+    this.category = null;
+    this.PCategories = null;
+    this.db.getCatlogCategories(this.catlogname).subscribe(val => {
+      console.log("val",val);
+      this.PCategories = val;
+      this.segregate();
+    });
+  }
+
+
 
   edit(item) {
     item.selected = true;
@@ -127,57 +130,22 @@ export class SubCategoryComponent implements OnInit {
       name: this.category,
       slug: this.category
     }
-    console.log("sub ans",this.subitems.ansisters,this.hasProduct)
+    console.log("sub ans",this.subitems.ansisters)
     var ansisters = this.subitems.ansisters;
     ansisters[this.category] = path;
     var doc = {
       ansisters: ansisters,
       name: this.name,
       id: this.name.replace(/ /g,'').toLowerCase(),
-      slug: this.name.replace(/ /g,'').toLowerCase(),
+      slug: this.slug,
+      status: this.status,
+      displaytype: this.display,
       parentid: this.category,
       isProduct: false,
-      hasProduct: this.hasProduct,
-      catlog: this.subitems.catlog
+      catlog: this.catlogname,
+
     }
     console.log("sub name,category,doc",this.name,this.category,doc);
-    this.db.addDoc(doc);
-  }
-
-  addCategory(){
-    var doc = {
-      ansisters: {},
-      name: this.name,
-      id: this.name.replace(/ /g,'').toLowerCase(),
-      slug: this.name.replace(/ /g,'').toLowerCase(),
-      parentid: null,
-      isProduct: false,
-      catlog: this.catlogname
-    }
-    console.log("category name,category,doc",this.name,this.category,doc);
-    this.db.addDoc(doc);
-  }
-
-  addProduct(){
-    var path = {
-      name: this.category,
-      slug: this.category
-    }
-    console.log("sub ans",this.subitems.ansisters,this.hasProduct)
-    var ansisters = this.subitems.ansisters;
-    ansisters[this.category] = path;
-    var doc = {
-      ansisters: ansisters,
-      name: this.name,
-      id: this.name.replace(/ /g,'').toLowerCase(),
-      slug: this.name.replace(/ /g,'').toLowerCase(),
-      parentid: this.category,
-      isProduct: true,
-      hasProduct: false,
-      catlog: this.subitems.catlog
-    }
-    console.log("sub name,category,doc",this.name,this.category,doc);
-    console.log("html",(<HTMLInputElement>document.getElementById('image')).files[0])
     this.db.addProduct(doc);
   }
 

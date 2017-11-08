@@ -2,44 +2,60 @@
     <div>
       <h2 style="display:inline-block;" >Update and Delete Items</h2>
       <!-- Trigger the modal with a button -->
-      <button type="button" class="btn btn-info btn-md" style="float:right; margin-top:1%;margin-right:1%" data-toggle="modal" data-target="#Subcategory">Add Sub Category</button>
+      <button type="button" class="btn btn-info btn-md" style="float:right; margin-top:1%;margin-right:1%" data-toggle="modal" data-target="#category">Add Category</button>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="Subcategory" role="dialog">
+    <div class="modal fade" id="category" role="dialog">
       <div class="modal-dialog">
       
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Add Sub Category</h4>
+            <h4 class="modal-title">Add Category</h4>
           </div>
           <div class="modal-body">
-              <form *ngIf="items" >
-                <!-- <div class="form-group">
-                  <input type="radio" (click)="getCategories()" [ngModel]="{checked: type == true}" (ngModelChange)="type=true"  name="type" value="true">Category<br>
-                  <input type="radio" (click)="getsubCategories()" [ngModel]="{checked: type == false}"  (ngModelChange)="type=false" name="type" value="false">SubCategory
-                </div> -->
-                <div class="form-group" >
-                  <label>Category</label>
-                  <select class="form-control" type="text"  [(ngModel)]="category" name="category"(change)="check()" required>
-                    <option *ngFor="let item of items" value="{{item.id}}">{{item.name}}</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Sub Category Name</label>
-                  <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
-                </div>
-  
-                <div class="form-group" >
-                  <label>hasProduct</label>
-                  <select class="form-control" type="text"  [(ngModel)]="hasProduct" name="hasProduct"(change)="check()" required>
-                    <option value="true">true</option>
-                    <option value="false">false</option>
-                  </select>
-                </div>
-            
-              </form>
+            <form *ngIf="items" >
+              <div class="form-group" >
+                <label>Catlog</label>
+                <select class="form-control" type="text"  [(ngModel)]="catlogname" name="catlogname" (change)="getcat()" required>
+                  <option *ngFor="let cat of catlog" value="{{cat.id}}">{{cat.name}}</option>
+                </select>
+              </div>
+              <div class="form-group" >
+                <label>Parent</label>
+                <select class="form-control" type="text"  [(ngModel)]="category" name="category"(change)="check()" required>
+                  <option *ngFor="let item of PCategories" value="{{item.id}}">{{item.dname}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label> Category Name</label>
+                <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label> Slug</label>
+                <input class="form-control" type="text" [(ngModel)]="slug" name="slug" required>
+              </div>
+              <div class="form-group">
+                <label>Place an Image</label>
+                <input id="image" name="image" [(ngModel)]="image" type="file" >
+              </div>
+              <div class="form-group">
+                <label> Status</label>
+                <select class="form-control" type="text"  [(ngModel)]="status" name="status" required>
+                  <option value="active">Active</option>
+                  <option value="inactive">InActive</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label> Display Type</label>
+                <select class="form-control" type="text"  [(ngModel)]="display" name="display" required>
+                  <option value="subcategory">Sub Category</option>
+                  <option value="Product">Product</option>
+                  <option value="Both">Both</option>
+                </select>
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
             <input type="submit" (click)="addSubCategory()"  data-dismiss="modal" class="btn btn-success">
@@ -65,7 +81,7 @@
             <th>Name</th>
             <th>Parent</th>
             <!-- <th>path</th> -->
-            <th>isProduct</th>
+            <!-- <th>isProduct</th> -->
             <th>Catlog</th>
             <th class="edit-width">Update</th>
             <th class="edit-width">Delete</th>
@@ -78,15 +94,15 @@
               <td *ngIf="item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.name"  [ngModelOptions]="{standalone: true}" ></td>
             <td *ngIf="item.parentid && !item.selected">{{item.parentid}}</td>
               <td *ngIf="item.parentid && item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.parentid" [ngModelOptions]="{standalone: true}" ></td>
-            <!-- <td *ngIf="!item.parentid" class="center">Head</td>
-            <td *ngIf="item.parentid">
+            <td *ngIf="!item.parentid" class="center">Head</td>
+            <!-- <td *ngIf="item.parentid">
                 <label class="d-inline">{{item.catlog | limitTo: 5}}/</label>
                 <label *ngFor="let key of item.indexing" class="d-inline">{{key | limitTo: 5}}/</label>
             </td>
               <td *ngIf="!item.parentid">
                   <h5 class="d-inline">{{item.catlog}}/</h5>
               </td> -->
-            <td>{{item.isProduct}}</td>
+            <!-- <td>{{item.isProduct}}</td> -->
             <td>{{item.catlog}}</td>
             <td class="edit-width">
               <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px" (click)="edit(item)" ></i>
