@@ -2,6 +2,10 @@
     width: 4%;
 }
 .table-styling{
-    padding-left: 18%;
-    padding-right: 1%;
+    margin-left:18%;
+    background-color:white;
+    margin-top:2%;
+    padding:2%;
+    min-height:550px;
+    width:81%;
 }
