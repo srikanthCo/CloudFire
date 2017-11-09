@@ -29,6 +29,14 @@ export class AddProductsComponent implements OnInit {
   hasProduct: boolean;
   PCategories: any;
   Pname: string;
+  instock:boolean;
+  description:string;
+  regularprice:string;
+  salesprice:string;
+  saleslimit:string;
+  weight:string;
+  shippingtype:string;
+
 
   constructor(private db: DbService) {
     db.getProducts().subscribe(val => {
@@ -155,10 +163,6 @@ export class AddProductsComponent implements OnInit {
   }
 
   addProduct(){
-    var path = {
-      name: this.category,
-      slug: this.category
-    }
     var parent = {};
     this.PCategories.forEach(element => {
       if(element.check){
@@ -166,18 +170,22 @@ export class AddProductsComponent implements OnInit {
       }
     });
     console.log("parent",parent)
-    // var ansisters = this.subitems.ansisters;
-    // ansisters[this.category] = path;
     var doc = {
       name: this.name,
       id: this.name.replace(/ /g,'').toLowerCase(),
       slug: this.name.replace(/ /g,'').toLowerCase(),
       categoryid: parent,
       isProduct: true,
-      catlog: this.catlogname
+      catlog: this.catlogname,
+      instock:this.instock,
+      description:this.description,
+      regularprice:this.regularprice,
+      salesprice:this.salesprice,
+      saleslimit:this.saleslimit,
+      weight:this.weight,
+      shippingtype:this.shippingtype
     }
-    console.log("sub name,category,doc",this.name,this.category,doc);
-    console.log("html",(<HTMLInputElement>document.getElementById('image')).files[0])
+    console.log("sub name,doc",this.name,doc);
     this.db.addProduct(doc);
   }
 }
