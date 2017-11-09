@@ -1,102 +1,86 @@
 <div class="container-fluid table-styling">
-    <div>
-      <h2 style="display:inline-block;" >Update and Delete Items</h2>
-      <!-- Trigger the modal with a button -->
-      <button type="button" class="btn btn-info btn-md" style="float:right; margin-top:1%;margin-right:1%" data-toggle="modal" data-target="#category">Add Category</button>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="category" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Add Category</h4>
-          </div>
-          <div class="modal-body">
-            <form *ngIf="items" >
-              <div class="form-group" >
-                <label>Catlog</label>
-                <select class="form-control" type="text"  [(ngModel)]="catlogname" name="catlogname" (change)="getcat()" required>
-                  <option *ngFor="let cat of catlog" value="{{cat.id}}">{{cat.name}}</option>
-                </select>
-              </div>
-              <div class="form-group" >
-                <label>Parent</label>
-                <select class="form-control" type="text"  [(ngModel)]="category" name="category"(change)="check()" required>
-                  <option *ngFor="let item of PCategories" value="{{item.id}}">{{item.dname}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label> Category Name</label>
-                <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label> Slug</label>
-                <input class="form-control" type="text" [(ngModel)]="slug" name="slug" required>
-              </div>
-              <div class="form-group">
-                <label>Place an Image</label>
-                <input id="image" name="image" [(ngModel)]="image" type="file" >
-              </div>
-              <div class="form-group">
-                <label> Status</label>
-                <select class="form-control" type="text"  [(ngModel)]="status" name="status" required>
-                  <option value="active">Active</option>
-                  <option value="inactive">InActive</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label> Display Type</label>
-                <select class="form-control" type="text"  [(ngModel)]="display" name="display" required>
-                  <option value="subcategory">Sub Category</option>
-                  <option value="Product">Product</option>
-                  <option value="Both">Both</option>
-                </select>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <input type="submit" (click)="addSubCategory()"  data-dismiss="modal" class="btn btn-success">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+  <div>
+    <h2 style="display:inline-block;" >Catlog</h2>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-md" style="float:right; margin-top:1%;margin-right:1%" data-toggle="modal" data-target="#catlog">Add Catlog</button>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="catlog" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Catlog</h4>
+        </div>
+        <div class="modal-body">
+          <form >
+            <div class="form-group">
+              <label> Catlog Name</label>
+              <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label> Slug</label>
+              <input class="form-control" type="text" [(ngModel)]="slug" name="slug" required>
+            </div>
+            <div class="form-group">
+              <label>Place an Image</label>
+              <input id="image" name="image" [(ngModel)]="image" type="file" >
+            </div>
+            <div class="form-group">
+              <label> Status</label>
+              <select class="form-control" type="text"  [(ngModel)]="status" name="status" required>
+                <option value="active">Active</option>
+                <option value="inactive">InActive</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" (click)="addCatlog()"  data-dismiss="modal" class="btn btn-success">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-    <hr>
-    <br/>
-    <div>
-      <form>
-        <div class="form-group" >
-            <input type="search"  class="form-control" [(ngModel)] = "search" [ngModelOptions]='{standalone: true}' placeholder="Search"/>
-          </div>
-      </form>
-    </div>
-    <div class="table-responsive" style="background-color:white;">          
-      <table class="table" style="padding:5%;">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th class="edit-width">Update</th>
-            <th class="edit-width">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of catlog | filter : search; let i =index">
-            <td>{{i+1}}</td>
-            <td *ngIf="!item.selected">{{item.name}}</td> 
-              <td *ngIf="item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.name"
-                  [ngModelOptions]="{standalone: true}" ></td>
-            <td class="edit-width">
-              <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px" (click)="edit(item)" ></i>
-            </td>
-            <td class="edit-width">
-              <i class="fa fa-trash-o" aria-hidden="true" style="font-size:24px" (click)="delete(item)" ></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
+  <hr>
+  <br/>
+  <div>
+    <form>
+      <div class="form-group" >
+          <input type="search"  class="form-control" [(ngModel)] = "search" [ngModelOptions]='{standalone: true}' placeholder="Search"/>
+        </div>
+    </form>
+  </div>
+  <div class="table-responsive">   
+    <div style="margin-left:48%;margin-top:10%;" *ngIf="!catlog">
+      <i class="fa fa-spinner fa-spin" style="font-size:24px;margin:2%;" ></i><br/>
+      <span>Loading</span>
+    </div>            
+    <table class="table" style="padding:5%;" *ngIf="catlog">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th class="edit-width">Update</th>
+          <th class="edit-width">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of catlog | filter : search; let i =index">
+          <td>{{i+1}}</td>
+          <td *ngIf="!item.selected">{{item.name}}</td> 
+            <td *ngIf="item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.name"
+                [ngModelOptions]="{standalone: true}" ></td>
+          <td class="edit-width">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px" (click)="edit(item)" ></i>
+          </td>
+          <td class="edit-width">
+            <i class="fa fa-trash-o" aria-hidden="true" style="font-size:24px" (click)="delete(item)" ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
