@@ -27,6 +27,10 @@ import { SubCategoryComponent } from './components/sub-category/sub-category.com
 import { ProductsComponent } from './components/products/products.component';
 import { UpdateCatLogComponent } from './components/update-cat-log/update-cat-log.component';
 import { AddProductsComponent } from './components/add-products/add-products.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { BrandComponent } from './components/brand/brand.component';
+import { AddShopComponent } from './components/add-shop/add-shop.component';
+
 
 const appRoutes: Routes = [
   {path:'',component: HomeComponent},
@@ -40,7 +44,10 @@ const appRoutes: Routes = [
   {path:'subcategory',component:SubCategoryComponent},
   {path:'products',component:ProductsComponent},
   {path:'updatecatlog',component:UpdateCatLogComponent},
-  {path:'addproducts',component:AddProductsComponent}
+  {path:'addproducts',component:AddProductsComponent},
+  {path:'addshop',component:AddShopComponent},
+  {path:'shop',component:ShopComponent},
+  {path:'brand',component:BrandComponent}
 ];
 
 @NgModule({
@@ -61,7 +68,10 @@ const appRoutes: Routes = [
     SubCategoryComponent,
     ProductsComponent,
     UpdateCatLogComponent,
-    AddProductsComponent
+    AddProductsComponent,
+    ShopComponent,
+    BrandComponent,
+    AddShopComponent
   ],
   imports: [
     BrowserModule,
