@@ -36,6 +36,18 @@ export class AddShopComponent implements OnInit {
   saleslimit:string;
   weight:string;
   shippingtype:string;
+  latitude:string;
+  longitude:string;
+  timings:string;
+  holidays:string;
+  apikeys:string;
+  cod:string;
+  currency:string;
+  address:string;
+  cname:string;
+  number:string;
+  code:string;
+  email:string;
 
 
   constructor(private db: DbService) {
