@@ -10,12 +10,14 @@ export class DbService {
   items: Observable<any[]>;
   itemDoc: Observable<any>;
   private itemsCollection: AngularFirestoreCollection<any>;
+  private catlogCollection: AngularFirestoreCollection<any>;
 
   constructor(private db: AngularFirestore) {
     this.folder = 'productimages';
     const query = "parentid";
     this.items = db.collection('categories', ref => ref.where(query, '==', null)).valueChanges();
     this.itemsCollection = db.collection('categories');
+    this.catlogCollection = db.collection('catlog');
   }
 
   getCatlog(){
@@ -69,7 +71,12 @@ export class DbService {
 
   addDoc(item) {
     const query = item.id;
-    this.itemsCollection.doc(query).set(item);
+    if(item.catlog){
+      this.itemsCollection.doc(query).set(item);
+    }else{
+
+    this.catlogCollection.doc(query).set(item);
+    }
   }
 
   updateDoc(item){
