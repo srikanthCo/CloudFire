@@ -29,6 +29,7 @@ export class UpdateCatLogComponent implements OnInit {
   slug:string;
   status:string;
   display:string;
+  image:any;
 
   constructor(private db: DbService) { 
     db.getCatlog().subscribe(val => {
@@ -88,6 +89,17 @@ export class UpdateCatLogComponent implements OnInit {
     this.add = false;
   }
 
+  addCatlog(){
+    var doc = {
+      name: this.name,
+      id: this.name.replace(/ /g,'').toLowerCase(),
+      slug: this.slug,
+      status: this.status,
+    }
+    
+    this.db.addProduct(doc);
+  }
+
   update(item){
     item.selected = false;
     if(item.parentid != item.indexing[item.indexing.length-1]){
@@ -136,7 +148,6 @@ export class UpdateCatLogComponent implements OnInit {
       parentid: this.category,
       isProduct: false,
       catlog: this.catlogname,
-
     }
     console.log("sub name,category,doc",this.name,this.category,doc);
     this.db.addProduct(doc);
