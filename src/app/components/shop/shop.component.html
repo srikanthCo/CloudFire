@@ -109,7 +109,7 @@
           <!-- <td>{{item.isProduct}}</td> -->
           <td>{{item.catlog}}</td>
           <td class="edit-width">
-            <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px" (click)="edit(item)" ></i>
+            <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px" data-toggle="modal" data-target="#myModal" ></i>
           </td>
           <td class="edit-width">
             <i class="fa fa-trash-o" aria-hidden="true" style="font-size:24px" (click)="delete(item)" ></i>
@@ -117,5 +117,46 @@
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+<div class="container">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Catlog</h4>
+        </div>
+        <div class="modal-body">
+          <form >
+            <div class="form-group">
+              <label> Catlog Name</label>
+              <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label> Slug</label>
+              <input class="form-control" type="text" [(ngModel)]="slug" name="slug" required>
+            </div>
+            <div class="form-group">
+              <label>Place an Image</label>
+              <input id="image" name="image" [(ngModel)]="image" type="file" >
+            </div>
+            <div class="form-group">
+              <label> Status</label>
+              <select class="form-control" type="text"  [(ngModel)]="status" name="status" required>
+                <option value="active">Active</option>
+                <option value="inactive">InActive</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" (click)="addCatlog()"  data-dismiss="modal" class="btn btn-success">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
