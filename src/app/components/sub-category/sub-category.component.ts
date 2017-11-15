@@ -30,6 +30,7 @@ export class SubCategoryComponent implements OnInit {
   slug:string;
   status:string;
   display:string;
+  index: string;
 
   constructor(private db: DbService) {
     db.getAllCategories().subscribe(val => {
@@ -83,8 +84,15 @@ export class SubCategoryComponent implements OnInit {
 
 
 
-  edit(item) {
-    item.selected = true;
+  edit(item,i) {
+    this.index = i;
+    console.log("edit",item);
+    this.name = item.name;
+    this.catlogname =item.catlog;
+    this.getcat();
+    this.category =item.parentid;
+    this.slug =item.slug;
+    this.status =item.status;
   }
 
   open(){
@@ -95,17 +103,21 @@ export class SubCategoryComponent implements OnInit {
     this.add = false;
   }
 
-  update(item){
-    item.selected = false;
-    if(item.parentid != item.indexing[item.indexing.length-1]){
-      console.log("item value",item.indexing[item.indexing.length-1]);
-      delete item.ansisters[item.indexing[item.indexing.length-1]];
+  update(){
+    var item = this.items[this.index];
+    var parent = item.parentid;
+    item.parentid = this.category;
+    if(item.parentid != parent){
+      delete item.ansisters[parent];
       item.ansisters[item.parentid] = {
         name: item.parentid,
         slug: item.parentid
       }
       item.indexing = Object.keys(item.ansisters);
     }
+    item.name = this.name;
+    item.slug = this.slug;
+    item.status = this.status;
     console.log("item",item);
 
     this.db.updateDoc(item);
