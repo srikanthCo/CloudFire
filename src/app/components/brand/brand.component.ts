@@ -20,6 +20,7 @@ export class BrandComponent implements OnInit {
   type: boolean = false;
   subcategory: any[];
   series: any[];
+  image:any;
   color:string = 'red';
   name: string;
   add:boolean=false;
@@ -30,6 +31,7 @@ export class BrandComponent implements OnInit {
   slug:string;
   status:string;
   display:string;
+  index:string;
 
   constructor(private db: DbService) {
     db.getAllCategories().subscribe(val => {
@@ -83,8 +85,11 @@ export class BrandComponent implements OnInit {
 
 
 
-  edit(item) {
-    item.selected = true;
+  edit(item,i) {
+    this.index = item.index;
+    this.name = item.name;
+    this.slug = item.slug;
+    this.status = item.status;
   }
 
   open(){
@@ -95,7 +100,8 @@ export class BrandComponent implements OnInit {
     this.add = false;
   }
 
-  update(item){
+  update(){
+    var item = this.items[this.index];
     item.selected = false;
     if(item.parentid != item.indexing[item.indexing.length-1]){
       console.log("item value",item.indexing[item.indexing.length-1]);

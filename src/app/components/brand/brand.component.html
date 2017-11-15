@@ -109,7 +109,7 @@
           <!-- <td>{{item.isProduct}}</td> -->
           <td>{{item.catlog}}</td>
           <td class="edit-width">
-            <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px" data-toggle="modal" data-target="#myModal"></i>
+            <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px" (click)="edit(item,i)" data-toggle="modal" data-target="#myModal"></i>
           </td>
           <td class="edit-width">
             <i class="fa fa-trash-o" aria-hidden="true" style="font-size:24px" (click)="delete(item)" ></i>
@@ -153,7 +153,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <input type="submit" (click)="addCatlog()"  data-dismiss="modal" class="btn btn-success">
+          <input type="submit" (click)="update()"  data-dismiss="modal" class="btn btn-success">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

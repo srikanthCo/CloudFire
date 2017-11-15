@@ -28,6 +28,9 @@ export class ProductsComponent implements OnInit {
   hasProduct: boolean;
   PCategories: any;
   Pname: string;
+  slug:string;
+  status:string;
+  index: string;
 
   constructor(private db: DbService) {
     db.getProducts().subscribe(val => {
@@ -75,8 +78,11 @@ export class ProductsComponent implements OnInit {
     this.PCategories = dup;
   }
 
-  edit(item) {
-    item.selected = true;
+  edit(item,i) {
+    this.index = i;
+    this.name = item.name;
+    this.slug = item.slug;
+    this.status = item.status;
   }
 
   open(){
@@ -87,7 +93,8 @@ export class ProductsComponent implements OnInit {
     this.add = false;
   }
 
-  update(item){
+  update(){
+    var item= this.items[this.index];
     item.selected = false;
     if(item.parentid != item.indexing[item.indexing.length-1]){
       console.log("item value",item.indexing[item.indexing.length-1]);

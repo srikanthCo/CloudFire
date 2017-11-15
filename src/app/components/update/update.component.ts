@@ -28,6 +28,9 @@ export class UpdateComponent implements OnInit {
   hasProduct: boolean;
   PCategories: any;
   Pname: string;
+  slug:string;
+  status:string;
+  image:any;
 
   constructor(private db: DbService) {
     db.getAllCategories().subscribe(val => {
