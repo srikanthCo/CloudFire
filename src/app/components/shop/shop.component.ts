@@ -117,7 +117,7 @@ export class ShopComponent implements OnInit {
   }
 
   delete(item){
-    this.db.deleteDoc(item);
+    this.db.deleteShopDoc(item);
   }
 
   check() {
