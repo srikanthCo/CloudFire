@@ -27,7 +27,7 @@ export class DbService {
   getCatlog(){
     return this.db.collection('catlog').valueChanges();
   }
-  
+
   getShop(){
     return this.shopCollection.valueChanges();
   }
@@ -99,6 +99,10 @@ export class DbService {
   deleteDoc(item){
     const query = item.id;
     this.itemsCollection.doc(query).delete();
+  }
+  deleteShopDoc(item){
+    const query = item.id;
+    this.shopCollection.doc(query).delete();
   }
 
   addProduct(doc){
