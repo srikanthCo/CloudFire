@@ -33,10 +33,7 @@ export class ShopComponent implements OnInit {
   index:string;
 
   constructor(private db: DbService) {
-    db.getAllCategories().subscribe(val => {
-      _.forEach(val,function(value: any,index){
-        value.indexing = Object.keys(value.ansisters);
-      });
+    db.getShop().subscribe(val => {
       this.items = val;
     }); 
     db.getCatlog().subscribe(val => {

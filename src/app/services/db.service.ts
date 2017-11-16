@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
+import { query } from '@angular/core/src/animation/dsl';
 
 @Injectable()
 export class DbService {
@@ -9,19 +10,26 @@ export class DbService {
 
   items: Observable<any[]>;
   itemDoc: Observable<any>;
+  shopDoc: Observable<any>;
   private itemsCollection: AngularFirestoreCollection<any>;
   private catlogCollection: AngularFirestoreCollection<any>;
+  private shopCollection: AngularFirestoreCollection<any>;
 
   constructor(private db: AngularFirestore) {
-    this.folder = 'productimages';
+    this.folder = 'images';
     const query = "parentid";
     this.items = db.collection('categories', ref => ref.where(query, '==', null)).valueChanges();
     this.itemsCollection = db.collection('categories');
     this.catlogCollection = db.collection('catlog');
+    this.shopCollection = db.collection('shops');
   }
 
   getCatlog(){
     return this.db.collection('catlog').valueChanges();
+  }
+  
+  getShop(){
+    return this.shopCollection.valueChanges();
   }
 
   getCategories(){
@@ -74,9 +82,12 @@ export class DbService {
     if(item.catlog){
       this.itemsCollection.doc(query).set(item);
     }else{
-
     this.catlogCollection.doc(query).set(item);
     }
+  }
+  addShop(item) {
+    const query = item.id;
+    this.shopCollection.doc(query).set(item);
   }
 
   updateDoc(item){
@@ -106,9 +117,25 @@ export class DbService {
         });
       }
     },1000);
-    console.log("html out",(<HTMLInputElement>document.getElementById('image')).files[0])
-    
-    
+    console.log("html out",(<HTMLInputElement>document.getElementById('image')).files[0]);
+  }
+  setShopDoc(doc){
+    setTimeout(()=>{
+      console.log("html",(<HTMLInputElement>document.getElementById('image')).files[0])
+      // Create root ref
+      let storageRef = firebase.storage().ref();
+      for(let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]){
+        console.log("selectedFile",selectedFile)
+        let path = `/${this.folder}/${selectedFile.name}`;
+        let iRef = storageRef.child(path);
+        iRef.put(selectedFile).then((snapshot) => {
+          doc.image = selectedFile.name;
+          doc.path = path;
+          this.addShop(doc);
+        });
+      }
+    },1000);
+    console.log("html out",(<HTMLInputElement>document.getElementById('image')).files[0]);
   }
 
 
