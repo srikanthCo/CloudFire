@@ -1,161 +1,61 @@
 <div class="container-fluid table-styling">
-    <div>
-      <h2 style="display:inline-block;" >Products</h2>
-      <!-- Trigger the modal with a button -->
-      <!-- <button type="button" class="btn btn-info btn-md" style="float:right; margin-top:1%;margin-right:1%" data-toggle="modal" data-target="#Subcategory">Add Sub Category</button> -->
-      <!-- Trigger the modal with a button -->
-      <!-- <button type="button" class="btn btn-info btn-md" style="float:right; margin-top:1%;margin-right:1%" data-toggle="modal" data-target="#Category">Add Category</button> -->
-      <!-- Trigger the modal with a button -->
-      <button type="button" class="btn btn-info btn-md" style="float:right; margin-top:1%;margin-right:1%" [routerLink]="['/addproducts']">Add Product</button>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="Product" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <!-- <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Add Product</h4>
-          </div> -->
-          <div class="modal-body">
-              <form *ngIf="items" >
-                <!-- <div class="form-group">
-                  <input type="radio" (click)="getCategories()" [ngModel]="{checked: type == true}" (ngModelChange)="type=true"  name="type" value="true">Category<br>
-                  <input type="radio" (click)="getsubCategories()" [ngModel]="{checked: type == false}"  (ngModelChange)="type=false" name="type" value="false">SubCategory
-                </div> -->
-                <!-- <div class="form-group" >
-                  <label>Catlog</label>
-                  <select class="form-control" type="text"  [(ngModel)]="catlogname" name="catlogname" (change)="getcat()" required>
-                    <option *ngFor="let cat of catlog" value="{{cat.id}}">{{cat.name}}</option>
-                  </select>
-                </div> -->
-                <div class="form-group" >
-                  <!-- <label>Category</label> -->
-                  <!-- <select class="form-control" type="text" [disabled]="!PCategories"  [(ngModel)]="category" name="category"(change)="check()" required>
-                    <option *ngFor="let Pcat of PCategories" [disabled]="!Pcat.hasProduct"  value="{{Pcat.id}}">{{Pcat.dname}}</option>
-                  </select> -->
-                  <!-- <div class="container-fluid" style="background-color:rgb(235, 235, 228);">
-                    <div class="col-sm-6" style="padding:5%;">
-                        <div *ngFor="let Pcat of PCategories" style="padding:2%;">
-                          <label *ngFor="let space of Pcat.space">&emsp;</label>
-                          <input [(ngModel)]="Pcat.check" [disabled]="Pcat.isProduct" [ngModelOptions]="{standalone: true}" type="checkbox"/>{{Pcat.name}}
-                        </div>
-                    </div>
-                  </div> -->
-                </div>
-                <!-- <div class="form-group">
-                  <label>Product Name</label>
-                  <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
-                </div> -->
-                <!-- <div class="form-group">
-                  <input id="image" name="image" [(ngModel)]="image" type="file" >
-                </div> -->
-            
-              </form>
-          </div>
-          <!-- <div class="modal-footer">
-            <input type="submit" (click)="addProduct()" [disabled]="!catlogname || !name"  data-dismiss="modal" class="btn btn-success">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div> -->
-        </div>
-      </div>
-    </div>
-    <hr>
-    <br/>
-    <div>
-      <form>
-        <div class="form-group" >
-            <input type="search"  class="form-control" [(ngModel)] = "search" [ngModelOptions]='{standalone: true}' placeholder="Search"/>
-          </div>
-      </form>
-    </div>
-    <div class="table-responsive">   
-      <div style="margin-left:48%;margin-top:10%;" *ngIf="!items">
-        <i class="fa fa-spinner fa-spin" style="font-size:24px;margin:2%;" ></i><br/>
-        <span>Loading</span>
-      </div>        
-      <table class="table"  *ngIf="items">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <!-- <th>Parent</th>
-            <th>path</th>
-            <th>isProduct</th> -->
-            <th>Catlog</th>
-            <th class="edit-width">Update</th>
-            <th class="edit-width">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of items | filter : search; let i =index">
-            <td>{{i+1}}</td>
-            <td *ngIf="!item.selected">{{item.name}}</td> 
-              <td *ngIf="item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.name"  [ngModelOptions]="{standalone: true}" ></td>
-            <!-- <td *ngIf="item.parentid && !item.selected">{{item.parentid}}</td>
-              <td *ngIf="item.parentid && item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.parentid" [ngModelOptions]="{standalone: true}" ></td>
-            <td *ngIf="!item.parentid" class="center">Head</td>
-            <td *ngIf="item.parentid">
-                <label class="d-inline">{{item.catlog | limitTo: 5}}/</label>
-                <label *ngFor="let key of item.indexing" class="d-inline">{{key | limitTo: 5}}/</label>
-            </td> -->
-              <!-- <td *ngIf="!item.parentid">
-                  <h5 class="d-inline">{{item.catlog}}/</h5>
-              </td> -->
-            <!-- <td>{{item.isProduct}}</td> -->
-            <td>{{item.catlog}}</td>
-            <td class="edit-width">
-              <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px" (click)="edit(item,i)" data-toggle="modal" data-target="#myModal" ></i>
-            </td>
-            <td class="edit-width">
-              <i class="fa fa-trash-o" aria-hidden="true" style="font-size:24px" (click)="delete(item)" ></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div>
+    <h2 style="display:inline-block;" >Products</h2>
+    <button type="button" class="btn btn-info btn-md" style="float:right; margin-top:1%;margin-right:1%" [routerLink]="['/addproducts']">Add Product</button>
   </div>
-  <div class="container">
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Edit Products</h4>
-          </div>
-          <div class="modal-body">
-            <form >
-              <div class="form-group">
-                <label>Name</label>
-                <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
-              </div>
-              <div class="form-group" *ngIf="category">
-                <label>Parent</label>
-                <select class="form-control" type="text"  [(ngModel)]="category" name="category" required>
-                  <option *ngFor="let item of PCategories" [disabled]="item.name == name" value="{{item.id}}">{{item.dname}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label> Slug</label>
-                <input class="form-control" type="text" [(ngModel)]="slug" name="slug" required>
-              </div>
-              <div class="form-group">
-                <label> Status</label>
-                <select class="form-control" type="text"  [(ngModel)]="status" name="status" required>
-                  <option value="active">Active</option>
-                  <option value="inactive">InActive</option>
-                </select>
+    <!-- Modal -->
+  <div class="modal fade" id="Product" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+            <form *ngIf="items" >
+              <div class="form-group" >
               </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <input type="submit" (click)="update()"  data-dismiss="modal" class="btn btn-success">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
         </div>
       </div>
     </div>
   </div>
+ <hr>
+<br/>
+<div>
+  <form>
+    <div class="form-group" >
+        <input type="search"  class="form-control" [(ngModel)] = "search" [ngModelOptions]='{standalone: true}' placeholder="Search"/>
+      </div>
+  </form>
+</div>
+<div class="table-responsive">   
+  <div style="margin-left:48%;margin-top:10%;" *ngIf="!items">
+    <i class="fa fa-spinner fa-spin" style="font-size:24px;margin:2%;" ></i><br/>
+    <span>Loading</span>
+  </div>        
+    <table class="table"  *ngIf="items">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Catlog</th>
+          <th class="edit-width">Update</th>
+          <th class="edit-width">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items | filter : search; let i =index">
+          <td>{{i+1}}</td>
+          <td *ngIf="!item.selected">{{item.name}}</td> 
+            <td *ngIf="item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.name"  [ngModelOptions]="{standalone: true}" ></td>
+          <td>{{item.catlog}}</td>
+          <td class="edit-width">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px"  [routerLink]="['/editproducts']" ></i>
+          </td>
+          <td class="edit-width">
+            <i class="fa fa-trash-o" aria-hidden="true" style="font-size:24px" (click)="delete(item)" ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

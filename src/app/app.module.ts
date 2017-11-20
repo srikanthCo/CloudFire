@@ -30,6 +30,8 @@ import { AddProductsComponent } from './components/add-products/add-products.com
 import { ShopComponent } from './components/shop/shop.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { AddShopComponent } from './components/add-shop/add-shop.component';
+import { EditShopComponent } from './components/edit-shop/edit-shop.component';
+import { EditProductsComponent } from './components/edit-products/edit-products.component';
 
 
 const appRoutes: Routes = [
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
   {path:'addproducts',component:AddProductsComponent},
   {path:'addshop',component:AddShopComponent},
   {path:'shop',component:ShopComponent},
-  {path:'brand',component:BrandComponent}
+  {path:'brand',component:BrandComponent},
+  {path:'editshop',component:EditShopComponent},
+  {path:'editproducts',component:EditProductsComponent}
 ];
 
 @NgModule({
@@ -71,7 +75,9 @@ const appRoutes: Routes = [
     AddProductsComponent,
     ShopComponent,
     BrandComponent,
-    AddShopComponent
+    AddShopComponent,
+    EditShopComponent,
+    EditProductsComponent
   ],
   imports: [
     BrowserModule,
