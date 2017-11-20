@@ -12,9 +12,7 @@ import {TruncatePipe} from '../../../app/pipes/truncate.pipe';
 })
 export class AddShopComponent implements OnInit {
   name: string;
-  search: string;
-  catlog: any;
-  description:string;
+  slug:string;
   latitude:string;
   longitude:string;
   timings:string;
@@ -29,6 +27,8 @@ export class AddShopComponent implements OnInit {
   email:string;
   smtp: string;
   image: any;
+  catlog: any;
+  description:string;
 
 
   constructor(private db: DbService) {
