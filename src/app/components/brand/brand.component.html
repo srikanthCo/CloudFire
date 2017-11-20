@@ -1,14 +1,10 @@
 <div class="container-fluid table-styling">
   <div>
     <h2 style="display:inline-block;" >Brand</h2>
-    <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-md" style="float:right; margin-top:1%;margin-right:1%" data-toggle="modal" data-target="#category">Add Brand</button>
   </div>
-  <!-- Modal -->
   <div class="modal fade" id="category" role="dialog">
     <div class="modal-dialog">
-    
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -67,11 +63,11 @@
   <hr>
   <br/>
   <div>
-    <form>
-      <div class="form-group" >
-          <input type="search"  class="form-control" [(ngModel)] = "search" [ngModelOptions]='{standalone: true}' placeholder="Search"/>
-        </div>
-    </form>
+  <form>
+    <div class="form-group" >
+        <input type="search"  class="form-control" [(ngModel)] = "search" [ngModelOptions]='{standalone: true}' placeholder="Search"/>
+      </div>
+  </form>
   </div>
   <div class="table-responsive" style="background-color:white;">
     <div style="margin-left:48%;margin-top:10%;" *ngIf="!items">
@@ -84,8 +80,6 @@
           <th>#</th>
           <th>Name</th>
           <th>Parent</th>
-          <!-- <th>path</th> -->
-          <!-- <th>isProduct</th> -->
           <th>Catlog</th>
           <th class="edit-width">Update</th>
           <th class="edit-width">Delete</th>
@@ -99,14 +93,6 @@
           <td *ngIf="item.parentid && !item.selected">{{item.parentid}}</td>
             <td *ngIf="item.parentid && item.selected"><input type="text" (blur)="update(item)" [(ngModel)]="item.parentid" [ngModelOptions]="{standalone: true}" ></td>
           <td *ngIf="!item.parentid" class="center">Head</td>
-          <!-- <td *ngIf="item.parentid">
-              <label class="d-inline">{{item.catlog | limitTo: 5}}/</label>
-              <label *ngFor="let key of item.indexing" class="d-inline">{{key | limitTo: 5}}/</label>
-          </td>
-            <td *ngIf="!item.parentid">
-                <h5 class="d-inline">{{item.catlog}}/</h5>
-            </td> -->
-          <!-- <td>{{item.isProduct}}</td> -->
           <td>{{item.catlog}}</td>
           <td class="edit-width">
             <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:24px" (click)="edit(item,i)" data-toggle="modal" data-target="#myModal"></i>
@@ -122,8 +108,6 @@
 <div class="container">
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
