@@ -29,6 +29,7 @@ export class EditShopComponent implements OnInit {
   email:string;
   smtp: string;
   image: any;
+  slug:string;
 
 
   constructor(private db: DbService) {
