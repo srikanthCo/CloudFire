@@ -1,8 +1,8 @@
 <div class="container" class="table-styling" *ngIf="item">
     <div>
       <h2 style="display:inline-block;" >Edit Shop</h2>
-      <input type="submit" (click)="addShop()" [disabled]="!slug || !name || !email || !number || !address || !cname || !latitude 
-      || !longitude || !description || !timings || !currency || !smtp || !code || !cod || !apikeys || !holidays"  data-dismiss="modal" class="btn btn-success" style="float:right">
+      <input type="submit" (click)="addShop()" [disabled]="!item.slug || !item.name || !item.email || !item.number || !item.address || !item.cname || !item.latitude 
+      || !item.longitude || !item.description || !item.timings || !item.currency || !item.smtp || !item.code || !item.cod || !item.apikeys || !item.holidays"  data-dismiss="modal" class="btn btn-success" style="float:right">
     </div>
     <hr>
     <form>
@@ -12,19 +12,19 @@
     </div> 
       <div class="form-group">
         <label>Slug*:</label>
-        <input class="form-control" type="text" [(ngModel)]="slug" name="slug" required>
+        <input class="form-control" type="text" [(ngModel)]="item.slug"  [ngModelOptions]="{standalone: true}" required>
       </div>
       <div class="form-group">
         <label>Description*:</label>
-        <textarea class="form-control" [(ngModel)]="description" name="description" rows="5"></textarea>
+        <textarea class="form-control" [(ngModel)]="item.description"  [ngModelOptions]="{standalone: true}" rows="5"></textarea>
       </div>
       <div class="form-group">
         <label>Picture*:</label>
-        <input id="image" name="image" [(ngModel)]="image" type="file" >
+        <input id="image" [(ngModel)]="image"  [ngModelOptions]="{standalone: true}" type="file" >
       </div>
     </form>
   </div>
-  <div class="container"  class="table-styling">
+  <div class="container"  class="table-styling" *ngIf="item">
     <div class="row" style="min-height:300px;padding:2%;">
       <h3>Additional Information</h3>
       <hr/>
@@ -66,19 +66,19 @@
             <hr>
             <div class="form-group">
               <label>Email*:</label>
-              <input class="form-control" type="email" [(ngModel)]="email" name="email" required>
+              <input class="form-control" type="email" [(ngModel)]="item.email"  [ngModelOptions]="{standalone: true}" required>
             </div>
             <div class="form-group">
               <label>Mobile*:</label>
-              <input class="form-control" type="number" [(ngModel)]="number" name="number" required>
+              <input class="form-control" type="number" [(ngModel)]="item.number"  [ngModelOptions]="{standalone: true}" required>
             </div>
             <div class="form-group">
                 <label>Company Name*:</label>
-                <input class="form-control" type="name" [(ngModel)]="cname" name="cname" required>
+                <input class="form-control" type="name" [(ngModel)]="item.cname"  [ngModelOptions]="{standalone: true}" required>
             </div>
             <div class="form-group">
               <label>Address*:</label>
-              <textarea class="form-control" [(ngModel)]="address" name="address" rows="5"></textarea>
+              <textarea class="form-control" [(ngModel)]="item.address"  [ngModelOptions]="{standalone: true}" rows="5"></textarea>
             </div>
           
             <div class="tab-content">
@@ -91,7 +91,7 @@
               <div class="form-group ">
                 <label>Latitude*</label>
                 <div class="input-group">
-                  <input type="number" class="form-control" placeholder="Latitude" name="latitude" [(ngModel)]="latitude">
+                  <input type="number" class="form-control" placeholder="Latitude"  [ngModelOptions]="{standalone: true}" [(ngModel)]="item.latitude">
                   <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="fa fa-dashboard"></i></button>
                   </div>
@@ -100,7 +100,7 @@
               <div class="form-group ">
                 <label>Longitude*</label>
                 <div class="input-group">
-                  <input type="number" class="form-control" placeholder="Longitude" name="longitude" [(ngModel)]="longitude" >
+                  <input type="number" class="form-control" placeholder="Longitude"  [ngModelOptions]="{standalone: true}" [(ngModel)]="item.longitude" >
                   <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class=" fa fa-dashboard"></i></button>
                   </div>
@@ -112,7 +112,7 @@
             <form>
               <div class="form-group ">
                 <label>Delivery Timings*</label>
-                <select class="form-control" type="text"  [(ngModel)]="timings" name="timings" required>
+                <select class="form-control" type="text"  [(ngModel)]="item.timings"  [ngModelOptions]="{standalone: true}" required>
                   <option value="true">Morning</option>
                   <option value="false">Afternoon</option>
                   <option value="false">Evening</option>
@@ -120,7 +120,7 @@
               </div>
               <div class="form-group ">
                 <label>Holidays*</label>
-                <select class="form-control" type="text" [(ngModel)]="holidays" name="holidays" required>
+                <select class="form-control" type="text" [(ngModel)]="item.holidays"  [ngModelOptions]="{standalone: true}" required>
                   <option vlaue="true">Yes</option>
                   <option value="false">No</option>
                 </select>
@@ -131,12 +131,12 @@
             <form>
               <div class="form-group ">
                 <label>API Keys*</label>
-                  <input type="number" class="form-control" placeholder="API Keys" name="apikeys" [(ngModel)]="apikeys">
+                  <input type="number" class="form-control" placeholder="API Keys"  [ngModelOptions]="{standalone: true}" [(ngModel)]="item.apikeys">
               </div>
               <div class="form-group ">
                 <label>COD*</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="COD" name="cod" [(ngModel)]="cod">
+                  <input type="text" class="form-control" placeholder="COD"  [ngModelOptions]="{standalone: true}" [(ngModel)]="item.cod">
                   <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="fa fa-money" aria-hidden="true"></i></button>
                   </div>
@@ -148,11 +148,11 @@
             <form>
               <div class="form-group ">
               <label>Currency Symbol*</label>
-                <input type="number" class="form-control" placeholder="currency" name="currency" [(ngModel)]="currency">
+                <input type="number" class="form-control" placeholder="currency"  [ngModelOptions]="{standalone: true}" [(ngModel)]="item.currency">
               </div>
               <div class="form-group ">
                 <label>Currency Short Code*</label>
-                  <input type="text" class="form-control" placeholder="code" name="code" [(ngModel)]="code">
+                  <input type="text" class="form-control" placeholder="code"  [ngModelOptions]="{standalone: true}" [(ngModel)]="item.code">
               </div>
             </form>
           </div>
@@ -161,7 +161,7 @@
               <div class="form-group">
                 <label>SMTP Settings*</label>
                 <div class="input-group">
-                  <input type="number" class="form-control" placeholder="currency" name="smtp" [(ngModel)]="smtp" >
+                  <input type="number" class="form-control" placeholder="currency"  [ngModelOptions]="{standalone: true}" [(ngModel)]="item.smtp" >
                   <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class=" fa fa-inr"></i></button>
                   </div>
