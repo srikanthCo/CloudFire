@@ -36,6 +36,7 @@ export class EditProductsComponent implements OnInit {
   saleslimit:string;
   weight:string;
   shippingtype:string;
+  slug:string;
 
 
   constructor(private db: DbService) {
