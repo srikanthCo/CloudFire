@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import {DbService} from '../../../app/services/db.service';
+import {Router, ActivatedRoute, Params} from '@angular/router'
 import { Observable } from 'rxjs/Observable';
 import {FilterPipe} from '../../../app/pipes/filter.pipe';
 import {TruncatePipe} from '../../../app/pipes/truncate.pipe';
@@ -11,6 +12,7 @@ import {TruncatePipe} from '../../../app/pipes/truncate.pipe';
   styleUrls: ['./edit-shop.component.css']
 })
 export class EditShopComponent implements OnInit {
+  id:any;
   name: string;
   search: string;
   catlog: any;
@@ -30,12 +32,17 @@ export class EditShopComponent implements OnInit {
   smtp: string;
   image: any;
   slug:string;
+  item: any;
 
-
-  constructor(private db: DbService) {
+  constructor(private db: DbService,private router: Router,private route: ActivatedRoute) {
+    this.id = this.route.snapshot.params['id'];
+    console.log("id",this.id);
     db.getCatlog().subscribe(val => {
       this.catlog = val;
     });
+    db.getShopDocument(this.id).subscribe(val => {
+      this.item = val;
+    })
   }
 
   ngOnInit() {
