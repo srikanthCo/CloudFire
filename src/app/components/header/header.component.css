@@ -1,5 +1,5 @@
 .navbar-custom {
-    background-color:#00bfff;
+    background-color:#3c8dbc;
 }
 .navbar-nav>li>a {
     color: white;
@@ -7,4 +7,7 @@
 .navbar-brand{
     color:white;
     font-size:150%;
+}
+.navbar -inverse{
+    border-color: white;
 }
