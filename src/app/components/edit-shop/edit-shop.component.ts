@@ -28,6 +28,8 @@ export class EditShopComponent implements OnInit {
       this.catlog.forEach(element => {
         if(this.item.catlog[element.id]== true){
           element.check = true;
+        }else{
+          element.check = false;
         }
       });
     })
