@@ -13,26 +13,9 @@ import {TruncatePipe} from '../../../app/pipes/truncate.pipe';
 })
 export class EditShopComponent implements OnInit {
   id:any;
-  name: string;
-  search: string;
   catlog: any;
-  description:string;
-  latitude:string;
-  longitude:string;
-  timings:string;
-  holidays:string;
-  apikeys:string;
-  cod:string;
-  currency:string;
-  address:string;
-  cname:string;
-  number:string;
-  code:string;
-  email:string;
-  smtp: string;
-  image: any;
-  slug:string;
   item: any;
+  image:any;
 
   constructor(private db: DbService,private router: Router,private route: ActivatedRoute) {
     this.id = this.route.snapshot.params['id'];
@@ -42,6 +25,11 @@ export class EditShopComponent implements OnInit {
     });
     db.getShopDocument(this.id).subscribe(val => {
       this.item = val;
+      this.catlog.forEach(element => {
+        if(this.item.catlog[element.id]== true){
+          element.check = true;
+        }
+      });
     })
   }
 
@@ -54,29 +42,9 @@ export class EditShopComponent implements OnInit {
         parent[element.id] = element.check;
       }
     }); 
-    console.log("parent",parent)
-    var doc = {
-      name: this.name,
-      id: this.name.replace(/ /g,'').toLowerCase(),
-      slug: this.name.replace(/ /g,'').toLowerCase(),
-      catlog: parent,
-      description: this.description,
-      latitude: this.latitude,
-      longitude: this.longitude,
-      cname: this.cname,
-      email: this.email,
-      number: this.number,
-      address: this.address,
-      holidays: this.holidays,
-      timings: this.timings,
-      apikeys: this.apikeys,
-      cod: this.cod,
-      currency: this.currency,
-      code: this.code,
-      smtp: this.smtp
-    }
-    console.log("sub name,doc",this.name,doc);
-    this.db.setShopDoc(doc);
+    this.item.catlog = parent;
+    console.log("doc",this.item);
+    this.db.setShopDoc(this.item);
   }
 
 }
