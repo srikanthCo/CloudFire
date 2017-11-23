@@ -50,7 +50,7 @@ const appRoutes: Routes = [
   {path:'addshop',component:AddShopComponent},
   {path:'shop',component:ShopComponent},
   {path:'brand',component:BrandComponent},
-  {path:'editshop',component:EditShopComponent},
+  {path:'editshop/:id',component:EditShopComponent},
   {path:'editproducts',component:EditProductsComponent}
 ];
 

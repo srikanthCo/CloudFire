@@ -76,6 +76,10 @@ export class DbService {
     var query = 'categories/'+id;
     return this.db.doc(query).valueChanges();
   }
+  getShopDocument(id){
+    var query = 'shops/'+id;
+    return this.db.doc(query).valueChanges();
+  }
 
   addDoc(item) {
     const query = item.id;
