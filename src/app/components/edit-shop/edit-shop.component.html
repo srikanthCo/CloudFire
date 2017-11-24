@@ -1,11 +1,11 @@
 <div class="container" class="table-styling" *ngIf="item">
-    <div>
-      <h2 style="display:inline-block;" >Edit Shop</h2>
-      <input type="submit" (click)="addShop()" [disabled]="!item.slug || !item.name || !item.email || !item.number || !item.address || !item.cname || !item.latitude 
-      || !item.longitude || !item.description || !item.timings || !item.currency || !item.smtp || !item.code || !item.cod || !item.apikeys || !item.holidays"  data-dismiss="modal" class="btn btn-success" style="float:right">
-    </div>
-    <hr>
-    <form>
+  <div>
+    <h2 style="display:inline-block;" >Edit Shop</h2>
+    <input type="submit" (click)="addShop()" [disabled]="!item.slug || !item.name || !item.email || !item.number || !item.address || !item.cname || !item.latitude 
+    || !item.longitude || !item.description || !item.timings || !item.currency || !item.smtp || !item.code || !item.cod || !item.apikeys || !item.holidays"  data-dismiss="modal" class="btn btn-success" style="float:right">
+  </div>
+  <hr>
+  <form>
     <div class="form-group">
      <label>Name*:</label>
      <input class="form-control" type="text" [(ngModel)]="item.name" [ngModelOptions]="{standalone: true}" required>
@@ -47,9 +47,9 @@
               <div class="form-group">
                 <div class="container-fluid" style="border:1px solid;border-color:lightgrey;">
                   <div class="col-sm-6" style="padding:2%;">
-                      <div *ngFor="let cat of catlog" style="padding:2%;">
-                        <input [(ngModel)]="cat.check" [ngModelOptions]="{standalone: true}" type="checkbox"/>{{cat.name}}
-                      </div>
+                    <div *ngFor="let cat of catlog" style="padding:2%;">
+                      <input [(ngModel)]="cat.check" [ngModelOptions]="{standalone: true}" type="checkbox"/>{{cat.name}}
+                    </div>
                   </div>
                 </div>
               </div>
