@@ -80,7 +80,6 @@ export class DbService {
     var query = 'shops/'+id;
     return this.db.doc(query).valueChanges();
   }
-
   addDoc(item) {
     const query = item.id;
     if(item.catlog){
