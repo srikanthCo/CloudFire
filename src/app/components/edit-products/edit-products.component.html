@@ -1,6 +1,8 @@
 <div class="container" class="table-styling">
   <div>
     <h2 style="display:inline-block;" >Edit Products</h2>
+    <input type="submit" (click)="addShop()" [disabled]="!item.name || !item.image || !item.regularprice ||!item.salesprice ||!item.instock ||!item.instock ||!item.saleslimit ||!item.weight ||!item.shippingtype"  data-dismiss="modal" class="btn btn-success" style="float:right">
+
   </div>
   <hr>
   <form *ngIf="items" >
@@ -22,7 +24,7 @@
       <input id="image" name="image" [(ngModel)]="image" type="file">
     </div>
   </form>
-</div>
+</div> 
 
 <div class="container"  class="table-styling">
   <div class="row" style="min-height:300px;padding:2%;">
@@ -114,8 +116,7 @@
   <div class="clearfix"></div>
     <br/>
     <hr/>
-    <input type="submit" (click)="addProduct()" [disabled]="!catlogname || !name"  data-dismiss="modal" class="btn btn-success" style="float:right">
-  </div>
+   </div>
 </div>
     
     
