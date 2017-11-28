@@ -1,7 +1,8 @@
 <div class="container" class="table-styling">
  <div>
   <h2 style="display:inline-block;" >Add Products</h2>
-  <input type="submit" (click)="addProducts()" [disabled]="!item.name || !item.image || !item.regularprice || !item.salesprice || !item.instock || !item.saleslimit || !item.weight || !item.shippingtype"  data-dismiss="modal" class="btn btn-success" style="float:right">
+  <input type="submit" (click)="addProducts()" [disabled]="!item.slug || !item.name || !item.email || !item.number || !item.address || !item.cname || !item.latitude 
+  || !item.longitude || !item.description || !item.timings || !item.currency || !item.smtp || !item.code || !item.cod || !item.apikeys || !item.holidays"  data-dismiss="modal" class="btn btn-success" style="float:right">
 </div>
   <hr>
 <form *ngIf="items" >
