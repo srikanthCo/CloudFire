@@ -1,27 +1,27 @@
 <div class="container" class="table-styling" *ngIf="item">
-    <div>
-      <h2 style="display:inline-block;" >Edit Shop</h2>
-      <input type="submit" (click)="addShop()" [disabled]="!item.slug || !item.name || !item.email || !item.number || !item.address || !item.cname || !item.latitude 
-      || !item.longitude || !item.description || !item.timings || !item.currency || !item.smtp || !item.code || !item.cod || !item.apikeys || !item.holidays"  data-dismiss="modal" class="btn btn-success" style="float:right">
-    </div>
-    <hr>
-    <form>
+  <div>
+    <h2 style="display:inline-block;" >Edit Shop</h2>
+    <input type="submit" (click)="addShop()" [disabled]="!item.slug || !item.name || !item.email || !item.number || !item.address || !item.cname || !item.latitude 
+    || !item.longitude || !item.description || !item.timings || !item.currency || !item.smtp || !item.code || !item.cod || !item.apikeys || !item.holidays"  data-dismiss="modal" class="btn btn-success" style="float:right">
+  </div>
+  <hr>
+  <form>
     <div class="form-group">
      <label>Name*:</label>
      <input class="form-control" type="text" [(ngModel)]="item.name" [ngModelOptions]="{standalone: true}" required>
     </div> 
-      <div class="form-group">
-        <label>Slug*:</label>
-        <input class="form-control" type="text" [(ngModel)]="item.slug"  [ngModelOptions]="{standalone: true}" required>
-      </div>
-      <div class="form-group">
-        <label>Description*:</label>
-        <textarea class="form-control" [(ngModel)]="item.description"  [ngModelOptions]="{standalone: true}" rows="5"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Picture*:</label>
-        <input id="image" [(ngModel)]="image"  [ngModelOptions]="{standalone: true}" type="file" >
-      </div>
+    <div class="form-group">
+      <label>Slug*:</label>
+      <input class="form-control" type="text" [(ngModel)]="item.slug"  [ngModelOptions]="{standalone: true}" required>
+    </div>
+    <div class="form-group">
+      <label>Description*:</label>
+      <textarea class="form-control" [(ngModel)]="item.description"  [ngModelOptions]="{standalone: true}" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Picture*:</label>
+      <input id="image" [(ngModel)]="image"  [ngModelOptions]="{standalone: true}" type="file" >
+    </div>
     </form>
   </div>
   <div class="container"  class="table-styling" *ngIf="item">
@@ -30,13 +30,13 @@
       <hr/>
       <div class="col-xs-3">
         <ul class="nav nav-tabs tabs-left">
-            <li class="active"><a href="#selectCategory" data-toggle="tab">Select Category</a></li>
-            <li><a href="#contactinformation" data-toggle="tab">Contact Information</a></li>
-            <li><a href="#locationinformation" data-toggle="tab">Location Information</a></li>
-            <li><a href="#storeinformation" data-toggle="tab">Store Information</a></li>
-            <li><a href="#paymentinformation" data-toggle="tab">Payment Information</a></li>
-            <li><a href="#currencysettings" data-toggle="tab">Currency Information</a></li>
-            <li><a href="#emailsettings" data-toggle="tab">Email Settings</a></li>
+          <li class="active"><a href="#selectCategory" data-toggle="tab">Select Category</a></li>
+          <li><a href="#contactinformation" data-toggle="tab">Contact Information</a></li>
+          <li><a href="#locationinformation" data-toggle="tab">Location Information</a></li>
+          <li><a href="#storeinformation" data-toggle="tab">Store Information</a></li>
+          <li><a href="#paymentinformation" data-toggle="tab">Payment Information</a></li>
+          <li><a href="#currencysettings" data-toggle="tab">Currency Information</a></li>
+          <li><a href="#emailsettings" data-toggle="tab">Email Settings</a></li>
         </ul>
       </div>
       <div class="col-xs-9">
@@ -174,7 +174,6 @@
       <div class="clearfix"></div>
       <br/>
       <hr/>
-        
     </div>
   </div>
   
