@@ -2,7 +2,6 @@
   <div>
     <h2 style="display:inline-block;" >Edit Products</h2>
     <input type="submit" (click)="addShop()" [disabled]="!item.name || !item.image || !item.regularprice ||!item.salesprice ||!item.instock ||!item.instock ||!item.saleslimit ||!item.weight ||!item.shippingtype"  data-dismiss="modal" class="btn btn-success" style="float:right">
-
   </div>
   <hr>
   <form *ngIf="items" >
