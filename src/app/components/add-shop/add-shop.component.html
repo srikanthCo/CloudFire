@@ -1,6 +1,8 @@
 <div class="container" class="table-styling">
   <div>
     <h2 style="display:inline-block;" >Add Shop</h2>
+    <input type="submit" (click)="addShop()" [disabled]="!item.slug || !item.name || !item.email || !item.number || !item.address || !item.cname || !item.latitude 
+    || !item.longitude || !item.description || !item.timings || !item.currency || !item.smtp || !item.code || !item.cod || !item.apikeys || !item.holidays"  data-dismiss="modal" class="btn btn-success" style="float:right">
   </div>
   <hr>
   <form>
@@ -8,45 +10,21 @@
    <label>Name*:</label>
    <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
   </div> 
-    <div class="form-group">
-      <label>Slug*:</label>
-      <input class="form-control" type="text" [(ngModel)]="slug" name="slug" required>
-    </div>
-    <div class="form-group">
-      <label>Description*:</label>
-      <textarea class="form-control" [(ngModel)]="description" name="description" rows="5"></textarea>
-    </div>
-    <div class="form-group">
-      <label>Picture*:</label>
-      <input id="image" name="image" [(ngModel)]="image" type="file" >
-    </div>
+  <div class="form-group">
+    <label>Slug*:</label>
+    <input class="form-control" type="text" [(ngModel)]="slug" name="slug" required>
+  </div>
+  <div class="form-group">
+    <label>Description*:</label>
+    <textarea class="form-control" [(ngModel)]="description" name="description" rows="5"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Picture*:</label>
+    <input id="image" name="image" [(ngModel)]="image" type="file" >
+  </div>
   </form>
 </div>
 
-<div class="container"   class="table-styling">
-<div>
-  <h2 style="display:inline-block;" >Select Catlog</h2>
-</div>
-<hr>
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#selectcategory"><label>Catlog</label></a></li>
-</ul>
-<div class="tab-content">
-  <div id="selectcategory" class="tab-pane fade in active">
-    <form *ngIf="catlog" >
-      <div class="form-group">
-        <div class="container-fluid" style="border:1px solid;border-color:lightgrey;">
-          <div class="col-sm-6" style="padding:2%;">
-              <div *ngFor="let cat of catlog" style="padding:2%;">
-                <input [(ngModel)]="cat.check" [ngModelOptions]="{standalone: true}" type="checkbox"/>{{cat.name}}
-              </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-  </div>
-  </div>
 <div class="container"   class="table-styling">
   <div>
     <h2>Contact Information</h2>
@@ -61,17 +39,12 @@
     <input class="form-control" type="number" [(ngModel)]="number" name="number" required>
   </div>
   <div class="form-group">
-      <label>Company Name*:</label>
-      <input class="form-control" type="name" [(ngModel)]="cname" name="cname" required>
+    <label>Company Name*:</label>
+    <input class="form-control" type="name" [(ngModel)]="cname" name="cname" required>
   </div>
   <div class="form-group">
     <label>Address*:</label>
     <textarea class="form-control" [(ngModel)]="address" name="address" rows="5"></textarea>
-  </div>
-
-  <div class="tab-content">
-    <div id="selectcategory" class="tab-pane fade in active">
-    </div>
   </div>
 </div>
 
@@ -79,24 +52,38 @@
   <div class="row" style="min-height:300px;padding:2%;">
     <h3>Additional Information</h3>
     <hr/>
-    <div class="col-xs-3">
-      <ul class="nav nav-tabs tabs-left">
-          <li class="active"><a href="#locationinformation" data-toggle="tab">Location Information</a></li>
-          <li><a href="#storeinformation" data-toggle="tab">Store Information</a></li>
-          <li><a href="#paymentinformation" data-toggle="tab">Payment Information</a></li>
-          <li><a href="#currencysettings" data-toggle="tab">Currency Information</a></li>
-          <li><a href="#emailsettings" data-toggle="tab">Email Settings</a></li>
-      </ul>
-    </div>
-    <div class="col-xs-9">
+  <div class="col-xs-3">
+    <ul class="nav nav-tabs tabs-left">
+      <li class="active"><a href="#selectcatlog" data-toggle="tab">Select Catlog</a></li>
+      <li><a href="#locationinformation" data-toggle="tab">Location Information</a></li>
+      <li><a href="#storeinformation" data-toggle="tab">Store Information</a></li>
+      <li><a href="#paymentinformation" data-toggle="tab">Payment Information</a></li>
+      <li><a href="#currencysettings" data-toggle="tab">Currency Information</a></li>
+      <li><a href="#emailsettings" data-toggle="tab">Email Settings</a></li>
+    </ul>
+  </div>
+  <div class="col-xs-9">
         <!-- Tab panes -->
-      <div class="tab-content">
-        <div class="tab-pane active" id="locationinformation" data-toggle="tab">
-          <form>
-            <div class="form-group ">
-              <label>Latitude*</label>
-              <div class="input-group">
-                <input type="number" class="form-control" placeholder="Latitude" name="latitude" [(ngModel)]="latitude">
+  <div class="tab-content">
+    <div id="selectcategory" class="tab-pane fade in active">
+      <form *ngIf="catlog" >
+        <div class="form-group">
+          <div class="container-fluid" style="border:1px solid;border-color:lightgrey;">
+            <div class="col-sm-6" style="padding:2%;">
+              <div *ngFor="let cat of catlog" style="padding:2%;">
+                <input [(ngModel)]="cat.check" [ngModelOptions]="{standalone: true}" type="checkbox"/>{{cat.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="tab-pane" id="locationinformation" data-toggle="tab">
+      <form>
+        <div class="form-group ">
+          <label>Latitude*</label>
+            <div class="input-group">
+              <input type="number" class="form-control" placeholder="Latitude" name="latitude" [(ngModel)]="latitude">
                 <div class="input-group-btn">
                   <button class="btn btn-default" type="submit"><i class="fa fa-dashboard"></i></button>
                 </div>
@@ -179,8 +166,6 @@
     <div class="clearfix"></div>
     <br/>
     <hr/>
-      <input type="submit" (click)="addShop()" [disabled]="!slug || !name || !email || !number || !address || !cname || !latitude 
-      || !longitude || !description || !timings || !currency || !smtp || !code || !cod || !apikeys || !holidays"  data-dismiss="modal" class="btn btn-success" style="float:right">
   </div>
 </div>
 

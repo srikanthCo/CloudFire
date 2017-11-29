@@ -62,6 +62,7 @@ export class EditProductsComponent implements OnInit {
     });
   }
 
+
   segregate(){
     var dup = [];
     for(let i=0; i<this.PCategories.length;i++){
