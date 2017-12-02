@@ -47,9 +47,9 @@
               <div class="form-group">
                 <div class="container-fluid" style="border:1px solid;border-color:lightgrey;">
                   <div class="col-sm-6" style="padding:2%;">
-                      <div *ngFor="let cat of catlog" style="padding:2%;">
-                        <input [(ngModel)]="cat.check" [ngModelOptions]="{standalone: true}" type="checkbox"/>{{cat.name}}
-                      </div>
+                    <div *ngFor="let cat of catlog" style="padding:2%;">
+                      <input [(ngModel)]="cat.check" [ngModelOptions]="{standalone: true}" type="checkbox"/>{{cat.name}}
+                    </div>
                   </div>
                 </div>
               </div>
