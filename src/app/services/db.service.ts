@@ -88,6 +88,7 @@ export class DbService {
     this.catlogCollection.doc(query).set(item);
     }
   }
+
   addShop(item) {
     const query = item.id;
     this.shopCollection.doc(query).set(item);
@@ -96,7 +97,6 @@ export class DbService {
   updateDoc(item){
     const query = item.id;
     this.itemsCollection.doc(query).update(item);
-
   }
 
   deleteDoc(item){
